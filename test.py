@@ -1,6 +1,20 @@
 import random
 import numpy as np
 
+# cette methode vient directement de queuing System mais comme je ne sais pas importer proprement
+# je lai copie brutalement en changeant le nom pr eviter toute collision
+#####neophyte # debutant # sagouin
+def Increment_ww( nb_Q,Card_BS, lamb, mu ):  # choix d arrivee ou depart d un client
+    param = (nb_Q*lamb)/(nb_Q*lamb + Card_BS*mu)
+    value = np.random.binomial(1, param)
+    return 2*value -1
+
+N=10
+lambbb, muuu = 1, 3
+for n in range(1,N): # n := nbr_Q
+    for  bs in range(1,5):
+        print(" avec ", "n=",n , "bs =", bs,"increment =",  Increment_ww(n, bs, lambbb, muuu))
+
 val = random.uniform(0,1)
 
 def uniformefacile(nbTirage):
@@ -32,6 +46,7 @@ print(tab[0])
 print(hex(id(tab[0])))
  
  """
+
 
 WaitingTime = [1,2,2,1,2,2,2,3,3,1,1]
 #InstantJump = np.cumsum(WaitingTime)
